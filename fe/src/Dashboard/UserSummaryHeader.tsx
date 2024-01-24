@@ -18,10 +18,10 @@ export const UserSummaryHeader: React.FC = () => {
     <header className="bg-slate-900 px-4 py-10 justify-between w-full flex rounded-b-xl ">
       <div className="flex items-center">
         <div className={`${userLoading ? "animate-pulse" : ""} flex align-start flex-col`}>
-          <p className={`pr-2 mb-2 text-slate-500 text-xl font-semibold`}>
+          <p className={`pr-2 mb-2 text-slate-300 text-xl font-semibold`}>
             {firstName} {lastName}
           </p>
-          <p className={`pr-2 mb-2 text-slate-500 text-xs`}>{username}</p>
+          <p className={`pr-2 mb-2 text-slate-300 text-xs`}>{username}</p>
           {userRole === "therapist" ? <CaretakerBadge /> : <ParentBadge />}
         </div>
       </div>
