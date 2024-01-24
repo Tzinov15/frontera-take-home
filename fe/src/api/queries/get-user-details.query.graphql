@@ -1,0 +1,30 @@
+query userDetails {
+  userDetails {
+    id
+    username
+    firstName
+    lastName
+    email
+    lastLogin
+    groups {
+      edges {
+        node {
+          id
+          name
+        }
+      }
+    }
+    staff {
+      id
+      firstname
+      lastname
+    }
+    students {
+      id
+      firstname
+      lastname
+      parentFirstname
+      parentLastname
+    }
+  }
+}

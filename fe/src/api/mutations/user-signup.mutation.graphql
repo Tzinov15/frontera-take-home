@@ -1,0 +1,48 @@
+mutation studentSignup(
+  $email: String!
+  $firstname: String!
+  $lastname: String
+  $dob: Date!
+  $gender: String
+  $country: ID!
+  $parentFirstname: String
+  $parentLastname: String
+  $password: String
+) {
+  studentSignup(
+    input: {
+      studentData: {
+        email: $email
+        firstname: $firstname
+        lastname: $lastname
+        dob: $dob
+        gender: $gender
+        country: $country
+        parentFirstname: $parentFirstname
+        parentLastname: $parentLastname
+        password: $password
+      }
+    }
+  ) {
+    student {
+      id
+      firstname
+      lastname
+      zipCode
+      parentFirstname
+      parentLastname
+      email
+      country {
+        id
+        name
+      }
+      parent {
+        id
+        username
+      }
+      email
+    }
+    message
+    status
+  }
+}
