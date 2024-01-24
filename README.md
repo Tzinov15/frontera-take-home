@@ -1,10 +1,12 @@
 # Frontera Take Home Assignment
 
-<img src='./screenshots/signin.png' width='100'>
-<img src='./screenshots/signup.png' width='100'>
-<img src='./screenshots/not-logged-in-dashboard.png' width='100'>
-<img src='./screenshots/therapist-dashboard.png' width='100'>
-<img src='./screenshots/parent-dashboard.png' width='100'>
+<p float="left">
+<img src='./screenshots/signin.png' width='15%'>
+<img src='./screenshots/signup.png' width='15%'>
+<img src='./screenshots/not-logged-in-dashboard.png' width='15%'>
+<img src='./screenshots/therapist-dashboard.png' width='15%'>
+<img src='./screenshots/parent-dashboard.png' width='15%'>
+</p>
 
 ## ⭐️🔗 [Live UI Link](https://frontera-takehome-alex-tzinov.netlify.app/auth)
 
