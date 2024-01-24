@@ -25,6 +25,8 @@ yarn install # install all project dependencies
 yarn start # run web server serving SPA, generate types
 
 # navigate to localhost:3000
+
+# or see live app link above
 ```
 
 ## The Approach and Decisions Made
@@ -72,4 +74,4 @@ What I do believe is a best practice that I would like to adopt is to almost imm
   There is currently a TherapistDashboard and a ParentDashboard that are themed differently and are setup to render unique information
 - ⚠️ "If the user refreshes the page or closes the tab and if the user is already logged in then redirect the user to the dashboard."
 
-  This was the only requirement that I did not complete. Upon doing research I discovered that storing JWTs in localStorage is considered a pretty insecure practice since running javascript on the page can pull these values. The securer-er way to persist sessions seems to be via setting cookies that include the JWT and using those cookies to re-authenticate subsequent requests
+  This was the only requirement that I did not complete. I both ran out of time, and also upon doing research I discovered that storing JWTs in localStorage is considered a pretty insecure practice since running javascript on the page can pull these values. I would be curious to research more ways to achieve this with just JWTs and not changing a backend. Initial research showed that a more secure way to persist sessions seems to be via setting cookies that include the JWT and using those cookies to re-authenticate subsequent requests. With another half day, I would be able to implement a localStorage sync for the token that comes following a signin if that is part of the assignment that is still desired.
