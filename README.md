@@ -20,7 +20,8 @@
 
 ```bash
 git clone git@github.com:Tzinov15/frontera-take-home.git
-cd frontera-take-home/fe
+cd frontera-take-home
+cd fe
 yarn install # install all project dependencies
 yarn start # run web server serving SPA, generate types
 
