@@ -55,6 +55,7 @@ export const UserProvider: React.FC<PropsWithChildren> = ({ children }) => {
 
   const signinMutation = useMutation<TokenAuthMutation, any, TokenAuthMutationVariables>({
     mutationFn: userSignIn,
+    /* Once the signin mutation succeeds, invalidate the userinfo query to get new data, delay navigating away to allow for success animation to finish */
     onSuccess: async (data) => {
       await queryClient.invalidateQueries({ queryKey: ["userinfo", data.tokenAuth?.token] });
       setTimeout(() => {
@@ -65,8 +66,8 @@ export const UserProvider: React.FC<PropsWithChildren> = ({ children }) => {
 
   const signupMutation = useMutation<StudentSignupMutation, any, StudentSignupInput>({
     mutationFn: userSignUp,
-    onSuccess: async (data, variables) => {
-      // TODO: Once a user signups up, we presumably need to sign them in using the creds they gave us
+    /* Once the signup mutation succeeds, take the credentials passed and use them to call the signin mutation */
+    onSuccess: async (_, variables) => {
       if (variables.email && variables.password) {
         signinMutation.mutate({
           username: variables.email,
@@ -78,6 +79,10 @@ export const UserProvider: React.FC<PropsWithChildren> = ({ children }) => {
 
   const token = signinMutation.data?.tokenAuth?.token;
 
+  /* the useQuery sets up a "subscription" of sorts to the userDetails query that will fire when:
+    a.) the queryKey changes, in this case if we get a new token
+    b.) a manual call to queryClient.invalidateQueries gets called
+   */
   const userDetails = useQuery<UserDetailsQuery>({
     // Don't request userDetails if we don't have a token
     enabled: !!token,
