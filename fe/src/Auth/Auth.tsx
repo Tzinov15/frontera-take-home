@@ -15,16 +15,16 @@ function Auth() {
       <div className="flex items-center justify-around mb-10">
         <h2
           onClick={() => setAuthMode("signin")}
-          className={`text-slate-200 text-3xl text-center ${
-            authMode === "signup" ? "" : "underline"
+          className={`text-slate-200 text-3xl text-center cursor-pointer ${
+            authMode === "signup" ? "opacity-50" : "underline"
           }`}
         >
           Sign In{" "}
         </h2>
         <h2
           onClick={() => setAuthMode("signup")}
-          className={`text-slate-200 text-3xl text-center ${
-            authMode === "signin" ? "" : "underline"
+          className={`text-slate-200 text-3xl text-center cursor-pointer ${
+            authMode === "signin" ? "opacity-50" : "underline"
           }`}
         >
           Sign Up{" "}
