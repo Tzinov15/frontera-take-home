@@ -6,6 +6,8 @@
 <img src='./screenshots/therapist-dashboard.png' width='100'>
 <img src='./screenshots/parent-dashboard.png' width='100'>
 
+## ⭐️🔗 [Live UI Link](https://frontera-takehome-alex-tzinov.netlify.app/auth)
+
 #### Table of Contents
 
 [How To Run](#how-to-run)  
