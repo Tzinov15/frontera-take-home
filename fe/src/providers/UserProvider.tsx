@@ -7,14 +7,22 @@ import {
 } from "@tanstack/react-query";
 import { PropsWithChildren, createContext } from "react";
 import { useNavigate } from "react-router-dom";
-import { getUserInfo, userSignIn } from "../api/api-service";
-import { TokenAuthMutation, TokenAuthMutationVariables, UserDetailsQuery } from "../gql/graphql";
+import { getUserInfo, userSignIn, userSignUp } from "../api/api-service";
+import {
+  StudentSignupInput,
+  StudentSignupMutation,
+  TokenAuthMutation,
+  TokenAuthMutationVariables,
+  UserDetailsQuery,
+} from "../gql/graphql";
 
 interface UserContextI {
   token: string | undefined;
   signin: ({ username, password }: { username: string; password: string }) => void;
+  signup: (params: StudentSignupInput) => void;
   signout: () => void;
   signinStatus: "error" | "idle" | "pending" | "success";
+  signupStatus: "error" | "idle" | "pending" | "success";
   signinMutation: UseMutationResult<TokenAuthMutation, any, TokenAuthMutationVariables> | null;
   userDetails: UseQueryResult<UserDetailsQuery, Error> | null;
 }
@@ -22,8 +30,10 @@ interface UserContextI {
 export const UserContext = createContext<UserContextI>({
   token: "",
   signin: () => {},
+  signup: () => {},
   signout: () => {},
   signinStatus: "idle",
+  signupStatus: "idle",
   userDetails: null,
   signinMutation: null,
 });
@@ -53,6 +63,19 @@ export const UserProvider: React.FC<PropsWithChildren> = ({ children }) => {
     },
   });
 
+  const signupMutation = useMutation<StudentSignupMutation, any, StudentSignupInput>({
+    mutationFn: userSignUp,
+    onSuccess: async (data, variables) => {
+      // TODO: Once a user signups up, we presumably need to sign them in using the creds they gave us
+      if (variables.email && variables.password) {
+        signinMutation.mutate({
+          username: variables.email,
+          password: variables.password,
+        });
+      }
+    },
+  });
+
   const token = signinMutation.data?.tokenAuth?.token;
 
   const userDetails = useQuery<UserDetailsQuery>({
@@ -71,8 +94,10 @@ export const UserProvider: React.FC<PropsWithChildren> = ({ children }) => {
       value={{
         signout: signinMutation.reset,
         signin: signinMutation.mutate,
+        signup: signupMutation.mutate,
         token,
         signinStatus: signinMutation.status,
+        signupStatus: signupMutation.status,
         userDetails,
         signinMutation,
       }}

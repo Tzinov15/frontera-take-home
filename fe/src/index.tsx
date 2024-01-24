@@ -9,7 +9,7 @@ import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
-import Auth from "./Auth";
+import Auth from "./Auth/Auth";
 import Dashboard from "./Dashboard/Dashboard";
 import { UserProvider } from "./providers/UserProvider";
 
