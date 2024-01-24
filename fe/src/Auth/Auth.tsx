@@ -6,7 +6,7 @@ function Auth() {
   const [authMode, setAuthMode] = useState<"signin" | "signup">("signin");
 
   return (
-    <div className="container bg-slate-800 mx-auto h-screen px-4 py-10">
+    <div className="container bg-slate-800 mx-auto  px-4 py-10">
       <h1 className="text-slate-500 text-2xl text-center border-slate-700 border-b pb-2 mb-4">
         <i className="fas fa-browser mx-1" />
         <i className="fas fa-mobile-button mx-2" />

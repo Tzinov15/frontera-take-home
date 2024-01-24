@@ -25,6 +25,9 @@ query userDetails {
       lastname
       parentFirstname
       parentLastname
+      admissionDate
+      dob
+      gender
     }
   }
 }

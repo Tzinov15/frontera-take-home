@@ -12,11 +12,11 @@ const userSignInMutation = graphql(
 );
 
 const userSignUpMutation = graphql(
-  "mutation studentSignup($email: String!, $firstname: String!, $lastname: String, $dob: Date!, $gender: String, $country: ID!, $parentFirstname: String, $parentLastname: String, $password: String) {\n  studentSignup(\n    input: {studentData: {email: $email, firstname: $firstname, lastname: $lastname, dob: $dob, gender: $gender, country: $country, parentFirstname: $parentFirstname, parentLastname: $parentLastname, password: $password}}\n  ) {\n    student {\n      id\n      firstname\n      lastname\n      zipCode\n      parentFirstname\n      parentLastname\n      email\n      country {\n        id\n        name\n      }\n      parent {\n        id\n        username\n      }\n      email\n    }\n    message\n    status\n  }\n}"
+  "mutation studentSignup($country: ID!, $dob: Date!, $email: String!, $firstname: String!, $gender: String, $lastname: String, $parentFirstname: String, $parentLastname: String, $password: String, $pronounceChild: String, $zipCode: String) {\n  studentSignup(\n    input: {studentData: {country: $country, dob: $dob, email: $email, firstname: $firstname, gender: $gender, lastname: $lastname, parentFirstname: $parentFirstname, parentLastname: $parentLastname, password: $password, pronounceChild: $pronounceChild, zipCode: $zipCode}}\n  ) {\n    student {\n      id\n      firstname\n      lastname\n      zipCode\n      parentFirstname\n      parentLastname\n      email\n      country {\n        id\n        name\n      }\n      parent {\n        id\n        username\n      }\n      email\n    }\n    message\n    status\n  }\n}"
 );
 
 const userDetailsQuery = graphql(
-  "query userDetails {\n  userDetails {\n    id\n    username\n    firstName\n    lastName\n    email\n    lastLogin\n    groups {\n      edges {\n        node {\n          id\n          name\n        }\n      }\n    }\n    staff {\n      id\n      firstname\n      lastname\n    }\n    students {\n      id\n      firstname\n      lastname\n      parentFirstname\n      parentLastname\n    }\n  }\n}"
+  "query userDetails {\n  userDetails {\n    id\n    username\n    firstName\n    lastName\n    email\n    lastLogin\n    groups {\n      edges {\n        node {\n          id\n          name\n        }\n      }\n    }\n    staff {\n      id\n      firstname\n      lastname\n    }\n    students {\n      id\n      firstname\n      lastname\n      parentFirstname\n      parentLastname\n      admissionDate\n      dob\n      gender\n    }\n  }\n}"
 );
 
 export const userSignIn = async (params: TokenAuthMutationVariables) => {

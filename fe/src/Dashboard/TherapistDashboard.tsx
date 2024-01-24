@@ -1,10 +1,15 @@
 import { useContext } from "react";
+import { getRoleFromUserDetails } from "../api/utils";
 import { UserContext } from "../providers/UserProvider";
+import { WrongDashboardBanner } from "./WrongDashboardBanner";
 
 export const TherapistDashboard: React.FC = () => {
   const { userDetails } = useContext(UserContext);
 
   if (!userDetails || !userDetails?.data || !userDetails.data.userDetails) return null;
+
+  const role = getRoleFromUserDetails(userDetails.data);
+  if (role !== "therapist") return <WrongDashboardBanner />;
 
   const { students } = userDetails.data.userDetails;
   return (

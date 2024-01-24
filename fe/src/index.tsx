@@ -25,7 +25,7 @@ root.render(
           <Routes>
             <Route path="/auth" element={<Auth />} />
             <Route path="/dashboard/*" element={<Dashboard />} />
-            <Route path="*" element={<Navigate to={"/dashboard"} />} />
+            <Route path="*" element={<Navigate to={"/auth"} />} />
           </Routes>
         </UserProvider>
       </QueryClientProvider>

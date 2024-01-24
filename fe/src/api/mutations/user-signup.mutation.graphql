@@ -1,26 +1,30 @@
 mutation studentSignup(
+  $country: ID!
+  $dob: Date!
   $email: String!
   $firstname: String!
-  $lastname: String
-  $dob: Date!
   $gender: String
-  $country: ID!
+  $lastname: String
   $parentFirstname: String
   $parentLastname: String
   $password: String
+  $pronounceChild: String
+  $zipCode: String
 ) {
   studentSignup(
     input: {
       studentData: {
+        country: $country
+        dob: $dob
         email: $email
         firstname: $firstname
-        lastname: $lastname
-        dob: $dob
         gender: $gender
-        country: $country
+        lastname: $lastname
         parentFirstname: $parentFirstname
         parentLastname: $parentLastname
         password: $password
+        pronounceChild: $pronounceChild
+        zipCode: $zipCode
       }
     }
   ) {
